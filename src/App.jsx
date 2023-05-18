@@ -5,7 +5,9 @@ import Inicio from './pages/inicio';
 import Contacto from './pages/Contacto';
 import Blog from './pages/Blog';
 import LayoutPublico from './layouts/LayoutPublico';
+import NotFound from './pages/NotFound'
 
+ 
 const App = () => {
   return (
 
@@ -22,9 +24,11 @@ const App = () => {
         <Route element={<LayoutPublico />} path='/'>
 
           {/*Rutas referenciadas por el Outlet desde el componente LayoutPublico*/}
+           {/*Ruta 404 la uso con path='*' */}
           <Route element={<Inicio />} path='/Inicio' />
           <Route element={<Contacto />} path='/Contacto'></Route>
           <Route element={<Blog />} path='/Blog'></Route>
+          <Route element={<NotFound />} path='*'></Route>
         </Route>
       </Routes>
 
