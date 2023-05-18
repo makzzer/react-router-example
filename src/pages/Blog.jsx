@@ -1,4 +1,5 @@
 import { useFetch } from "../hooks/useFetch";
+import { Link } from "react-router-dom";
 
 
 const Blog = () => {
@@ -7,7 +8,8 @@ const Blog = () => {
 
     if (error) {
 
-    return <p>error...</p>}
+        return <p>error...</p>
+    }
     if (loading) {
         return <p>loading...</p>
 
@@ -15,11 +17,15 @@ const Blog = () => {
         return (
             <>
                 <h1>Blog de cositas</h1>
-                <ul>
+                <ul className="list-group">
+                    {/*con agregarle al Link el prop to={`/blog/${dato.id}`}, hago que cuando clickee en el enlace me cree la pagina directamente del blog que elijo ver, eso lo puedo hacer en una tienda para que me lleve al articulo puntual y no tener 100 paginas para diferentes objetos*/}
                     {
                         data.map(dato =>
                         (
-                            <li key={dato.id}>{dato.title} </li>)
+                            <Link to={`/blog/${dato.id}`} key={dato.id}
+                                className="list-group-item">
+                                {dato.id} {dato.title}
+                            </Link>)
                         )
                     }
                 </ul>
