@@ -44,7 +44,21 @@ const Blog = () => {
 
         <ul className="list-group">
           {/*con agregarle al Link el prop to={`/blog/${dato.id}`}, hago que cuando clickee en el enlace me cree la pagina directamente del blog que elijo ver, eso lo puedo hacer en una tienda para que me lleve al articulo puntual y no tener 100 paginas para diferentes objetos*/}
-          {data.map((dato) => (
+          {data.filter(item =>{
+          
+            //defino el filtro que voy a usar, con el searParams
+            let filter = searchParams.get("filter")
+            //si el filtro no existe, osea que no hubo busqueda, retorno todos los elementos
+            if (!filter) return true;
+
+            //sino si el nombre comienza con lo que dice el filtro, eso me devuelve un nuevo array y ese array recorro con un map
+            let name = item.title.toLowerCase()
+            return name.startsWith(filter.toLocaleLowerCase())
+          }
+          )
+          
+          
+          .map((dato) => (
             <Link
               to={`/blog/${dato.id}`}
               key={dato.id}
