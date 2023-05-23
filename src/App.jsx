@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/Navbar';
 import { Route, Routes } from 'react-router-dom';
-import Inicio from './pages/inicio';
+import Inicio from './pages/Inicio';
 import Contacto from './pages/Contacto';
 import Blog from './pages/Blog';
 import LayoutPublico from './layouts/LayoutPublico';
